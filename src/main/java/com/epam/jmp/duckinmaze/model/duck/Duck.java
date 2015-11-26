@@ -1,5 +1,6 @@
 package com.epam.jmp.duckinmaze.model.duck;
 
+import com.epam.jmp.duckinmaze.behavior.HungryStrategy;
 import com.epam.jmp.duckinmaze.model.Direction;
 import com.epam.jmp.duckinmaze.model.Location;
 
@@ -8,11 +9,15 @@ import com.epam.jmp.duckinmaze.model.Location;
  */
 public abstract class Duck {
 
+    private HungryStrategy hungryStrategy;
+
     protected Location location = new Location();
     private String name;
     private int stepCounter;
 
-    // implement strategy to work with different behavior depends on manual or auto mode
+    public Duck(HungryStrategy hungryStrategy) {
+        this.hungryStrategy = hungryStrategy;
+    }
 
     public String getName() {
         return name;

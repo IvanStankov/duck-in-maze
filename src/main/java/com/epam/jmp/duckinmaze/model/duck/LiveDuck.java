@@ -1,5 +1,6 @@
 package com.epam.jmp.duckinmaze.model.duck;
 
+import com.epam.jmp.duckinmaze.behavior.HungryStrategy;
 import com.epam.jmp.duckinmaze.model.Direction;
 import com.epam.jmp.duckinmaze.util.LocationUtil;
 
@@ -10,6 +11,10 @@ public class LiveDuck extends Duck {
 
     private boolean flying;
     private boolean swimming;
+
+    public LiveDuck(HungryStrategy hungryStrategy) {
+        super(hungryStrategy);
+    }
 
     @Override
     public String quack() {

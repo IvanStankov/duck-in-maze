@@ -1,5 +1,6 @@
 package com.epam.jmp.duckinmaze.model.duck;
 
+import com.epam.jmp.duckinmaze.behavior.HungryStrategy;
 import com.epam.jmp.duckinmaze.model.Direction;
 import com.epam.jmp.duckinmaze.util.LocationUtil;
 
@@ -7,6 +8,10 @@ import com.epam.jmp.duckinmaze.util.LocationUtil;
  * Created by Ваня on 25.11.2015.
  */
 public class ToyDuck extends Duck {
+
+    public ToyDuck(HungryStrategy hungryStrategy) {
+        super(hungryStrategy);
+    }
 
     @Override
     public String quack() {

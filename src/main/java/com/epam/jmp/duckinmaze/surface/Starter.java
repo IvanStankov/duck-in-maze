@@ -1,5 +1,6 @@
 package com.epam.jmp.duckinmaze.surface;
 
+import com.epam.jmp.duckinmaze.behavior.AutomaticHungryStrategy;
 import com.epam.jmp.duckinmaze.model.Direction;
 import com.epam.jmp.duckinmaze.model.duck.Duck;
 import com.epam.jmp.duckinmaze.model.duck.LiveDuck;
@@ -11,8 +12,8 @@ import com.epam.jmp.duckinmaze.model.duck.ToyDuck;
 public class Starter {
 
     public static void main(String[] args) {
-        Duck duck = new LiveDuck();
-        Duck toyDuck = new ToyDuck();
+        Duck duck = new LiveDuck(new AutomaticHungryStrategy());
+        Duck toyDuck = new ToyDuck(new AutomaticHungryStrategy());
 
         for (int i = 0; i < 15; i++) {
             System.out.println(duck.walk(Direction.RIGHT));
