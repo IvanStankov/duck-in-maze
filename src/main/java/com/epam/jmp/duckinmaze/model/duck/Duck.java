@@ -12,28 +12,29 @@ public abstract class Duck {
     private HungryStrategy hungryStrategy;
 
     protected Location location = new Location();
-    private String name;
     private int stepCounter;
 
     public Duck(HungryStrategy hungryStrategy) {
         this.hungryStrategy = hungryStrategy;
     }
 
-    public String getName() {
-        return name;
+    public int getStepCounter() {
+        return stepCounter;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setStepCounter(int stepCounter) {
+        this.stepCounter = stepCounter;
     }
 
     public abstract String quack();
 
     public abstract String walk(Direction direction);
 
-    protected abstract void getEnergy();
+    public abstract void getEnergy();
 
-    protected void move(Direction direction) {
+    public abstract void hungrySignal();
+
+    private void doStep(Direction direction) {
         switch (direction) {
             case UP:
                 location.decreaseY();
@@ -48,11 +49,10 @@ public abstract class Duck {
                 location.increaseX();
                 break;
         }
-        if (stepCounter == 10) {
-            getEnergy();
-            stepCounter = 0;
-        } else {
-            stepCounter++;
-        }
+    }
+
+    protected void move(Direction direction) {
+        hungryStrategy.checkHungry(this);
+        doStep(direction);
     }
 }

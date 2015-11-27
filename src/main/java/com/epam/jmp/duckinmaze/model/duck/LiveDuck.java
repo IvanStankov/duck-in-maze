@@ -44,8 +44,12 @@ public class LiveDuck extends Duck {
     }
 
     @Override
-    protected void getEnergy() {
-        System.out.print("I am hungry. ");
+    public void hungrySignal() {
+        System.out.println("I am hungry.");
+    }
+
+    @Override
+    public void getEnergy() {
         if (swimming) {
             System.out.println("So I am drinking water.");
         } else {

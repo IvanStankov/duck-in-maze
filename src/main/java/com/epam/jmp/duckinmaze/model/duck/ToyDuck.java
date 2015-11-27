@@ -29,7 +29,12 @@ public class ToyDuck extends Duck {
     }
 
     @Override
-    protected void getEnergy() {
-        System.out.println("Batteries are exhausted. I am being replaced batteries.");
+    public void hungrySignal() {
+        System.out.println("Batteries are exhausted.");
+    }
+
+    @Override
+    public void getEnergy() {
+        System.out.println("I am being replaced batteries.");
     }
 }
