@@ -7,6 +7,6 @@ import com.epam.jmp.duckinmaze.model.duck.Duck;
  */
 public interface HungryStrategy {
 
-    void checkHungry(Duck duck);
+    boolean checkHungry(Duck duck);
 
 }

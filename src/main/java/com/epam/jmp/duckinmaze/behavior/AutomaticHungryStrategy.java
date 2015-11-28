@@ -8,14 +8,15 @@ import com.epam.jmp.duckinmaze.model.duck.Duck;
 public class AutomaticHungryStrategy implements HungryStrategy {
 
     @Override
-    public void checkHungry(Duck duck) {
+    public boolean checkHungry(Duck duck) {
         int stepCounter = duck.getStepCounter();
         if (stepCounter == 10) {
             duck.hungrySignal();
-            duck.getEnergy();
+            duck.takeFood();
             duck.setStepCounter(0);
         } else {
             duck.setStepCounter(stepCounter + 1);
         }
+        return false;
     }
 }

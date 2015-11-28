@@ -2,7 +2,8 @@ package com.epam.jmp.duckinmaze.model.duck;
 
 import com.epam.jmp.duckinmaze.behavior.HungryStrategy;
 import com.epam.jmp.duckinmaze.model.Direction;
-import com.epam.jmp.duckinmaze.util.LocationUtil;
+import com.epam.jmp.duckinmaze.model.Location;
+import com.epam.jmp.duckinmaze.util.Printer;
 
 /**
  * Created by Ваня on 25.11.2015.
@@ -17,30 +18,24 @@ public class LiveDuck extends Duck {
     }
 
     @Override
-    public String quack() {
-        return "Quack quack";
+    public void quack() {
+        Printer.print("Quack quack");
     }
 
     @Override
-    public String walk(Direction direction) {
-        move(direction);
-        swimming = false;
-        flying = false;
-        return LocationUtil.printLocation("I am walking. ", location);
+    public Location walk(Direction direction) {
+        move(direction, false, false, "I am walking.");
+        return location;
     }
 
-    public String swim(Direction direction) {
-        move(direction);
-        swimming = true;
-        flying = false;
-        return LocationUtil.printLocation("I am swimming. ", location);
+    public Location swim(Direction direction) {
+        move(direction, true, false, "I am swimming.");
+        return location;
     }
 
-    public String fly(Direction direction) {
-        move(direction);
-        flying = true;
-        swimming = false;
-        return LocationUtil.printLocation("I am flying. ", location);
+    public Location fly(Direction direction) {
+        move(direction, true, false, "I am flying");
+        return location;
     }
 
     @Override
@@ -49,11 +44,25 @@ public class LiveDuck extends Duck {
     }
 
     @Override
-    public void getEnergy() {
+    public void takeFood() {
         if (swimming) {
-            System.out.println("So I am drinking water.");
+            Printer.print("So I am drinking water.");
         } else {
-            System.out.println("So I am eating something.");
+            Printer.print("So I am eating something.");
+        }
+        setStepCounter(0);
+    }
+
+    @Override
+    public void askForFood() {
+        Printer.print("I need to eat!");
+    }
+
+    private void move(Direction direction, boolean swimming, boolean flying, String description) {
+        if (!move(direction)) {
+            this.swimming = swimming;
+            this.flying = flying;
+            Printer.print(description, location);
         }
     }
 }

@@ -2,7 +2,8 @@ package com.epam.jmp.duckinmaze.model.duck;
 
 import com.epam.jmp.duckinmaze.behavior.HungryStrategy;
 import com.epam.jmp.duckinmaze.model.Direction;
-import com.epam.jmp.duckinmaze.util.LocationUtil;
+import com.epam.jmp.duckinmaze.model.Location;
+import com.epam.jmp.duckinmaze.util.Printer;
 
 /**
  * Created by Ваня on 25.11.2015.
@@ -14,27 +15,35 @@ public class ToyDuck extends Duck {
     }
 
     @Override
-    public String quack() {
-        return "Electronic q-u-aaaaa-c-k";
+    public void quack() {
+        Printer.print("Electronic q-u-aaaaa-c-k");
     }
 
     @Override
-    public String walk(Direction direction) {
-        move(direction);
-        return LocationUtil.printLocation("Toy duck is walking. ", location);
+    public Location walk(Direction direction) {
+        if (!move(direction)) {
+            Printer.print("Toy duck is walking. ", location);
+        }
+        return location;
     }
 
-    public String flitter() {
-        return "I am flittering";
+    public void flitter() {
+        Printer.print("I am flittering");
     }
 
     @Override
     public void hungrySignal() {
-        System.out.println("Batteries are exhausted.");
+        Printer.print("Batteries are exhausted.");
     }
 
     @Override
-    public void getEnergy() {
-        System.out.println("I am being replaced batteries.");
+    public void askForFood() {
+        Printer.print("Substitute me batteries!");
+    }
+
+    @Override
+    public void takeFood() {
+        Printer.print("Batteries are being changed!");
+        setStepCounter(0);
     }
 }

@@ -26,13 +26,15 @@ public abstract class Duck {
         this.stepCounter = stepCounter;
     }
 
-    public abstract String quack();
+    public abstract void quack();
 
-    public abstract String walk(Direction direction);
-
-    public abstract void getEnergy();
+    public abstract Location walk(Direction direction);
 
     public abstract void hungrySignal();
+
+    public abstract void takeFood();
+
+    public abstract void askForFood();
 
     private void doStep(Direction direction) {
         switch (direction) {
@@ -51,8 +53,11 @@ public abstract class Duck {
         }
     }
 
-    protected void move(Direction direction) {
-        hungryStrategy.checkHungry(this);
-        doStep(direction);
+    protected boolean move(Direction direction) {
+        boolean hungry = hungryStrategy.checkHungry(this);
+        if (!hungry) {
+            doStep(direction);
+        }
+        return hungry;
     }
 }
