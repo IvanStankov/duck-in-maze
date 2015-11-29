@@ -13,7 +13,7 @@ public class AutomaticHungryStrategy implements HungryStrategy {
         if (stepCounter == 10) {
             duck.hungrySignal();
             duck.takeFood();
-            duck.setStepCounter(0);
+            duck.setStepCounter(1);
         } else {
             duck.setStepCounter(stepCounter + 1);
         }

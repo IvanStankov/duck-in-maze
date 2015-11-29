@@ -26,6 +26,14 @@ public abstract class Duck {
         this.stepCounter = stepCounter;
     }
 
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public abstract void quack();
 
     public abstract Location walk(Direction direction);

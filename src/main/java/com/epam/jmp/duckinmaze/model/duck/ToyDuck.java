@@ -34,6 +34,9 @@ public class ToyDuck extends Duck {
     @Override
     public void hungrySignal() {
         Printer.print("Batteries are exhausted.");
+        for (int i = 0; i < 5; i++) {
+            quack();
+        }
     }
 
     @Override
