@@ -1,4 +1,4 @@
-package com.epam.jmp.duckinmaze.surface;
+package com.epam.jmp.duckinmaze.starter;
 
 import com.epam.jmp.duckinmaze.menu.Menu;
 

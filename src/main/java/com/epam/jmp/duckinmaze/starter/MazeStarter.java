@@ -1,4 +1,4 @@
-package com.epam.jmp.duckinmaze.surface;
+package com.epam.jmp.duckinmaze.starter;
 
 /**
  * Created by Ваня on 29.11.2015.
