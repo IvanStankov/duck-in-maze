@@ -5,7 +5,9 @@ package com.epam.jmp.duckinmaze.maze;
  */
 public class Point {
 
+    // column number
     private int x;
+    // line number
     private int y;
 
     public Point(int x, int y) {

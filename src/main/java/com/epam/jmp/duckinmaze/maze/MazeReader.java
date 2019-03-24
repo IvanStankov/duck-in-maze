@@ -1,9 +1,13 @@
 package com.epam.jmp.duckinmaze.maze;
 
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,11 +21,21 @@ public final class MazeReader {
     private static final String INPUT = "I";
     private static final String OUTPUT = "X";
 
+    public static Maze read(final InputStream inputStream) {
+        final List<String> lines = new BufferedReader(new InputStreamReader(inputStream)).lines()
+                .collect(Collectors.toList());
+        return process(lines);
+    }
+
     public static Maze read(String path) throws IOException {
+        return process(Files.lines(Paths.get(path))
+                .collect(Collectors.toList()));
+    }
+
+    private static Maze process(final Collection<String> lines) {
         int[][] maze = null;
         Point input = null;
         Point output = null;
-        List<String> lines = Files.lines(Paths.get(path)).collect(Collectors.toList());
         int i = 0;
         for (String line : lines) {
             String[] cells = line.split("\\s");
